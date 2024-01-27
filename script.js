@@ -1,4 +1,3 @@
-
 function sum(num1, num2) {
     return parseFloat(num1) + parseFloat(num2);
 }
@@ -9,7 +8,6 @@ function pro(num1, num2) {
 
 function dif(num1, num2) {
     return parseFloat(num1) - parseFloat(num2);}
-
 
 function qou(num1, num2) {
     return parseFloat(num1) / parseFloat(num2);}
@@ -41,32 +39,24 @@ function addToDisplay(input) {
 }
 
 const clear = document.querySelector('#clear');
-const add = document.querySelector('#add');
-const sub = document.querySelector('#sub');
-const div = document.querySelector('#div');
-const mul = document.querySelector('#mul');
 const equal = document.querySelector('#equal');
-
-
-const buttonContainer = document.querySelector('.button-container');
-const buttons = buttonContainer.querySelectorAll('button');
+const buttonContainerForNumber = document.querySelector('.button-container');
+const buttonsForNumbers = buttonContainerForNumber.querySelectorAll('button');
 
 let firstOperand = "";
 let secondOperand = "";
 let operator = "";
-
 let isNewNum = false;
 let clearDisplay = false;
-buttons.forEach((button) => {
-    button.addEventListener('click', () => {
+let result = '';
 
+buttonsForNumbers.forEach((button) => {
+    button.addEventListener('click', () => {
    
         if (clearDisplay) {
             display.value = "";
             clearDisplay = false;
         }
-
-
 
         if (isNewNum) {     
             secondOperand += button.id;
@@ -79,47 +69,57 @@ buttons.forEach((button) => {
     });
 });
 
+const buttonForOperatorContainer = document.querySelector('.button-operator');
+const buttonForOperator = buttonForOperatorContainer.querySelectorAll('button'); 
 
-add.addEventListener('click' , () => {
-    operator = "+";
-    isNewNum = true;
-    clearDisplay = true;
+
+buttonForOperator.forEach(button => {
+    button.addEventListener('click', () => {
+        isNewNum = true;
+        clearDisplay = true;
+
+        if (firstOperand !== "" && operator !== "" && secondOperand !== "") {
     
+            result = String(operate(parseFloat(firstOperand), operator, 
+            parseFloat(secondOperand)));
+            display.value = result;
+
+            firstOperand = result;
+            secondOperand = "";
+          
+        } 
+
+        operator = button.id;
+
+        switch(operator) {
+            case "add":
+                operator = "+";
+                break;
+            case "sub":
+                operator = "-";
+                break;
+            case "div":
+                operator = "/";
+                break;
+            case "mul":
+                operator = "*";
+                break;
+        }
+    });
 });
-
-sub.addEventListener('click' , () => {
-    operator = "-";
-    isNewNum = true;
-    clearDisplay = true;
-    
-});
-
-div.addEventListener('click' , () => {
-    operator = "/";
-    isNewNum = true;
-    clearDisplay = true;
-    
-});
-
-mul.addEventListener('click' , () => {
-    operator = "*";
-    isNewNum = true;
-    clearDisplay = true;
-    
-});
-
-
-
 
 
 
 equal.addEventListener('click', () => {
-    if (firstOperand !== undefined || secondOperand !== undefined || operator !== undefined) {
-        let result = operate(firstOperand, operator, secondOperand);
-        display.value = "";
-        addToDisplay(parseFloat(result));
-    }
-});
+    display.value = "";
+    result = String(operate(firstOperand, operator, secondOperand));
+    addToDisplay(result);
+})
+
+
+
+
+
 
 
 
