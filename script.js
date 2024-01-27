@@ -50,7 +50,6 @@ let operator = "";
 let isNewNum = false;
 let clearDisplay = false;
 let result = '';
-let beginAddingNumber = true;
 
 
 function initialZeroValue() {
@@ -65,15 +64,8 @@ buttonsForNumbers.forEach((button) => {
 
         if (button.id == 0 && firstOperand.length == 0) {
             initialZeroValue();
-        }   else {
+        }else {
        
-
-        if (beginAddingNumber) {
-            display.value = "";
-            beginAddingNumber = false;
-        }
-
-
    
         if (clearDisplay) {
             display.value = "";
