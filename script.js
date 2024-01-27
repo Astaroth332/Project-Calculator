@@ -34,6 +34,7 @@ function operate(num1, operator, num2) {
 
 const display = document.querySelector('#display');
 
+
 function addToDisplay(input) {
    display.value += input;
 }
@@ -49,9 +50,30 @@ let operator = "";
 let isNewNum = false;
 let clearDisplay = false;
 let result = '';
+let beginAddingNumber = true;
+
+
+function initialZeroValue() {
+    const input = document.querySelector('#display');
+    input.value = "0";
+}
+
+initialZeroValue();
 
 buttonsForNumbers.forEach((button) => {
     button.addEventListener('click', () => {
+
+        if (button.id == 0 && firstOperand.length == 0) {
+            initialZeroValue();
+        }   else {
+       
+
+        if (beginAddingNumber) {
+            display.value = "";
+            beginAddingNumber = false;
+        }
+
+
    
         if (clearDisplay) {
             display.value = "";
@@ -65,6 +87,9 @@ buttonsForNumbers.forEach((button) => {
             firstOperand += button.id;
             addToDisplay(button.id);
         }
+
+    }
+
 
     });
 });
@@ -82,7 +107,8 @@ buttonForOperator.forEach(button => {
     
             result = String(operate(parseFloat(firstOperand), operator, 
             parseFloat(secondOperand)));
-            display.value = result;
+            let convertNumber = Number(result);
+            display.value = +(Math.round(convertNumber + "e+2") + "e-2");
 
             firstOperand = result;
             secondOperand = "";
@@ -109,11 +135,18 @@ buttonForOperator.forEach(button => {
 });
 
 
-
 equal.addEventListener('click', () => {
+
+    if (firstOperand == "" || secondOperand == "" || operator == "") {
+    initialZeroValue()
+    } else {
+
     display.value = "";
-    result = String(operate(firstOperand, operator, secondOperand));
-    addToDisplay(result);
+    result = String(operate(parseFloat(firstOperand), operator, 
+    parseFloat(secondOperand)));
+    let convertToNumber = Number(result);
+    addToDisplay(+(Math.round(convertToNumber + "e+2") + "e-2"));
+    }
 })
 
 
