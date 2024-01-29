@@ -1,0 +1,41 @@
+[33mcommit 49903c601a11dfd526fc7c7b9a8db47673144555[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m)[m
+Author: Astaroth332 <nomairiguro66@gmail.com>
+Date:   Mon Jan 29 13:04:31 2024 +0800
+
+    Fixing the commit conflict of 'Added the style sheet of it and only the layout first which has been implemented'
+
+[33mcommit 78aee9679e7750ba1373d44d9c0e36ce4f9492de[m
+Author: Astaroth332 <nomairiguro66@gmail.com>
+Date:   Sun Jan 28 18:14:01 2024 +0800
+
+    Fixing the error of deletition of zero if it is the first input number and added the feature such as delete button, dot button, handling the error if divide by 0
+
+[33mcommit de09b20a621edb10da18e31f4f416d883f97f347[m
+Author: Astaroth332 <nomairiguro66@gmail.com>
+Date:   Sat Jan 27 17:27:00 2024 +0800
+
+    Fixing the function of the display of calculator where it default display value is 0 (zero) and delete the display of zero if it is the first input. Also it will only provide two decimal places for the result which is also rounded already
+
+[33mcommit 183a16537c23459f4b40da4f2932f917376da2ac[m
+Author: Astaroth332 <nomairiguro66@gmail.com>
+Date:   Sat Jan 27 16:14:29 2024 +0800
+
+    Fixing the input display such as the default dispay value is 0 (zero) and removing zero as the first input number when the user enter again a number greater than zero
+
+[33mcommit edb5b55b7f3bf681ad8c653340ada10ff08b20fa[m
+Author: Astaroth332 <nomairiguro66@gmail.com>
+Date:   Sat Jan 27 13:21:47 2024 +0800
+
+    Adding the function of the calculator where it can display the result of the previous calculation when the user clicks another operator to operate on the result to the new number that will be put
+
+[33mcommit 583a6caa505a974bbc27e1af47a2320ade8db5d4[m
+Author: Astaroth332 <nomairiguro66@gmail.com>
+Date:   Fri Jan 26 15:58:15 2024 +0800
+
+    Added basic structure of button and displaying the calculation for add operation
+
+[33mcommit 62689c2d2d2b997f9dc9ea71ad448f1d4022443c[m
+Author: Nomairi Abubacar <123735361+Astaroth332@users.noreply.github.com>
+Date:   Thu Jan 25 14:49:18 2024 +0800
+
+    Initial commit
