@@ -2,6 +2,8 @@
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+    color: white;
+    font-family: "Chakra Petch", sans-serif;;
 }
 
 body {
@@ -20,6 +22,7 @@ body {
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
+    background-color: #48E5C2;
 }
 
 #input-container {
@@ -31,6 +34,7 @@ input {
     height: 67px;
     font-size: 45px;
     padding-left: 10px;
+    background-color: #324A5F;
 }
 
 .buttons-and-functions-container {
@@ -40,22 +44,22 @@ input {
 
 .number-button-and-function-button-container {
     flex: 1;
- 
 }
 
 .function-container {
- 
     padding: 12px 0;
     padding-left: 15px;
     display: flex;
     gap: 19px;
+
 }
 
 
 .function-container button {
     height: 59px;
     width: 145px;
-
+    font-size: 35px;
+    background-color: #324A5F;
 }
 
 .button-container {
@@ -73,11 +77,14 @@ input {
 
 .number-button-column .special-case-button  {
     width: 202px;
+    font-size: 35px;
 }
 
 .number-button-column button{   
     width: 95px;
     height: 80px;
+    font-size: 35px;
+    background-color: #324A5F;
 }
 
 .operator-button-and-equal-button-container {
@@ -96,6 +103,8 @@ input {
 .button-operator button {
     height: 70px;
     width: 95px;
+    font-size: 35px;
+    background-color: #92140C;
 }
 
 .equal-button-container {
@@ -104,5 +113,7 @@ input {
 
 .equal-button-container button {
     width: 95px;
-    height: 120px;
+    height: 123px;
+    font-size: 35px;
+    background-color: #92140C;
 }

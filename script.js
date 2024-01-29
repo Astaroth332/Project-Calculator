@@ -60,10 +60,12 @@ let checkDotForFirstOperand = true;
 let checkDotForSecondOperand = false;
 let activateDeleteInFirstOperand = false;
 let activateDeleteInSecondOperand = false;
-let activateDeleteInResult = false;
+
 
 buttonsForNumbers.forEach((button) => {
     button.addEventListener('click', (e) => {
+
+      
 
         if (e.target.id === "." && checkDotForFirstOperand) {
             if (containOneDotForFirstOperand) {
@@ -128,14 +130,14 @@ const buttonForOperatorContainer = document.querySelector('.button-operator');
 const buttonForOperator = buttonForOperatorContainer.querySelectorAll('button'); 
 
 let specialCaseForDivide = false;
-
+let activateDeleteInResultIfClickAnOperator = false;
 buttonForOperator.forEach(button => {
-    button.addEventListener('click', () => {
+    button.addEventListener('click', (e) => {
         isNewNum = true;
         clearDisplayAfterOperator = true;
         checkDotForSecondOperand = true;
         checkDotForFirstOperand = false;
-
+        
         if (firstOperand !== "" && operator !== "" && secondOperand !== "") {
 
             if (specialCaseForDivide && parseFloat(secondOperand) === 0 ) {
@@ -151,6 +153,7 @@ buttonForOperator.forEach(button => {
             firstOperand = result;
             secondOperand = "";
             activateDeleteInSecondOperand = false;
+            activateDeleteInResultIfClickAnOperator = true;
             
         } 
 
@@ -171,9 +174,12 @@ buttonForOperator.forEach(button => {
                 operator = "*";
                 break;
         }
+
+      
     });
 });
 let clearValueIfIncomplete = false;
+let activateDeleteInResultIfClickEqual = false;
 
 equal.addEventListener('click', () => {
 
@@ -206,6 +212,7 @@ equal.addEventListener('click', () => {
     let convertToNumber = Number(result);
     addToDisplay(+(Math.round(convertToNumber + "e+2") + "e-2"));
     activateDeleteInSecondOperand = false;
+    activateDeleteInResultIfClickEqual = true;
     }
 });
 
@@ -244,6 +251,8 @@ clear.addEventListener('click' , () => {
 
 const buttonForDelete = document.querySelector('#delete');
 
+
+
 buttonForDelete.addEventListener('click' , () => {
 
     if(activateDeleteInFirstOperand) {
@@ -256,14 +265,26 @@ buttonForDelete.addEventListener('click' , () => {
         let modifiedSecondOperand = secondOperand.slice(0,-1);
         addToDisplay(modifiedSecondOperand);
         secondOperand = modifiedSecondOperand;
-    }   else {
+    }
+
+    if (activateDeleteInResultIfClickAnOperator) {
+        display.value = "";
+        let modifiedFirstOperand = firstOperand.slice(0,-1);
+        addToDisplay(modifiedFirstOperand);
+        firstOperand = modifiedFirstOperand;
+    }
+
+    if (activateDeleteInResultIfClickEqual) {
         display.value = "";
         let modifiedResult = result.slice(0,-1);
         addToDisplay(modifiedResult);
         firstOperand = modifiedResult;
-        secondOperand = "";
-        isNewNum = true;
+        secondOperand = ""
+        result = ""
+      
     }
+
+
 })
 
 
